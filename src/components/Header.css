@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+}
+
+header{
+    background-color: black;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+header img{
+    width: 130px;
+}
