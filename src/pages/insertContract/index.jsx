@@ -54,7 +54,8 @@ export default function InsertContract(){
                 Authorization: localStorage.getItem('token')
             }
         }
-        axios.post(`${url}/contractFile`, formData, headers).then(()=>{
+        axios.post(`${url}/contractFile`, formData, headers).then(res=>{
+            alert(res.data)
             limpar()
         }).catch(e=>{
             alert(e.response.data)

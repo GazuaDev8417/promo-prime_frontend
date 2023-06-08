@@ -86,7 +86,7 @@ export default function Contracts(){
                             <td>{convertDate(contract.signedAt)}</td>
                             <td><FaFileContract className="icon"
                                 onClick={()=>{
-                                    getContractName(contract.contractName)
+                                    window.open(`${url}/files/${contract.contractName}`, '__blank')
                             }}/></td>
                         </tr>
                     )
