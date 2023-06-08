@@ -47,6 +47,7 @@ export default function Signup(props){
         }
         axios.post(`${url}/signup`, body).then(res=>{
             localStorage.setItem('token', res.data)
+            navigate('/contracts')
         }).catch(e=>{
             alert(e.response.data)
         })
