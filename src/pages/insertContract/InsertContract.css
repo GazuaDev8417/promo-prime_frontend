@@ -21,6 +21,18 @@ fieldset{
     padding: 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 4px gray;
+
+    @media(max-width: 1024px){
+        width: 40vw;
+    }
+
+    @media(max-width: 1440px){
+        width: 25vw;
+    }
+
+    @media(max-width: 1680px){
+        width: 15vw;
+    }
 }
 
 legend{
@@ -33,9 +45,21 @@ input{
     border: 1px solid;
     border-radius: 20px;
     height: 25px;
-    padding-left: 10px;
+    padding: 0 10px;
     color: white;
-    width: 50vw;
+    width: 50vw;  
+    
+    @media(max-width: 1024px){
+        width: 30vw;
+    }
+
+    @media(max-width: 1440px){
+        width: 25vw;
+    }
+
+    @media(max-width: 1680px){
+        width: 25vw;
+    }
 }
 
 input[type='file']{
@@ -46,7 +70,19 @@ input[type='file']{
 fieldset div{
     margin-top: 20px;
     display: flex;
-    justify-content: space-around;    
+    justify-content: space-around;
+    
+    @media(max-width: 1024px){
+        gap: 10px;
+    }
+
+    @media(max-width: 1440px){
+        gap: 10px;
+    }
+
+    @media(max-width: 1680px){
+        gap: 10px;
+    }
 }
 
 button{

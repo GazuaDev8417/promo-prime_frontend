@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from "react"
-import Context from "../../global/Context"
+import { useEffect, useState } from "react"
 import axios from 'axios'
 import { url } from '../../constants/url'
 import { useNavigate } from 'react-router-dom'
@@ -13,7 +12,6 @@ import './Contracts.css'
 
 
 export default function Contracts(){
-    const { setters } = useContext(Context)
     const navigate = useNavigate()
     const [contracts, setContracts] = useState([])
 
@@ -43,13 +41,12 @@ export default function Contracts(){
         }).then(res=>{
             setContracts(res.data)
         }).catch(e=>{
-            alert(e.response.data)
+            if(e.response.data === 'jwt expired'){
+                alert('Sua sessão expirou. Faça login novamente')
+            }else{
+                alert(e.response.data)
+            }
         })
-    }
-
-    const getContractName = (name)=>{
-        setters.setContractName(name)
-        navigate('/display-contract')
     }
 
 

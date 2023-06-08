@@ -58,7 +58,11 @@ export default function InsertContract(){
             alert(res.data)
             limpar()
         }).catch(e=>{
-            alert(e.response.data)
+            if(e.response.data === 'jwt expired'){
+                alert('Sua sessão expirou. Faça login novamente')
+            }else{
+                alert(e.response.data)
+            }
         })
     }
 
@@ -83,7 +87,11 @@ export default function InsertContract(){
             }).then(()=>{
                 registContract()
             }).catch(e=>{
-                alert(e.response.data)
+                if(e.response.data === 'jwt expired'){
+                    alert('Sua sessão expirou. Faça login novamente')
+                }else{
+                    alert(e.response.data)
+                }
             })
         }
 

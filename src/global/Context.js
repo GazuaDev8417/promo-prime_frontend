@@ -5,11 +5,10 @@ const Context = createContext()
 
 
 export const GlobalState = (props)=>{
-    const [contractName, setContractName] = useState('')
     
 
-    const states = {contractName}
-    const setters = {setContractName}
+    const states = {}
+    const setters = {}
     const requests = {}
 
 
