@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { url } from '../../constants/url'
-import './login.css'
 import Header from '../../components/Header'
+import { FaUserPlus } from 'react-icons/fa'
+import './login.css'
+
+
+
+
 
 export default function Login(props){
     const navigate = useNavigate()
@@ -56,7 +61,9 @@ export default function Login(props){
 
     return(
         <div className='container'>
-            <Header leftItem={<div></div>} rightItem={<div></div>}/>
+            <Header leftItem={<div></div>} 
+                rightItem={<FaUserPlus onClick={()=> navigate('/signup')}
+                    className='rightIcon'/>}/>
             <form onSubmit={login}>
                 <fieldset>
                     <legend>Acesso</legend>
@@ -72,9 +79,6 @@ export default function Login(props){
                     </div>
                 </fieldset>
             </form>
-            <div className="link">
-                Clique <a href='/signup'>aqui</a> para registrar um novo usuário. 
-            </div>
         </div>
     )
 }

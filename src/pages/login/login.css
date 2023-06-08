@@ -6,6 +6,11 @@
     color: white;
 }
 
+.rightIcon{
+    font-size: 20pt;
+    cursor: pointer;
+}
+
 fieldset{
     position: absolute;
     left: 50%;
@@ -36,11 +41,11 @@ input{
 fieldset div{
     margin-top: 20px;
     display: flex;
-    justify-content: space-around;    
+    justify-content: space-between;    
 }
 
 fieldset button{
-    width: 20vw;
+    width: 10vw;
     height: 25px;
     background-color: rgb(36, 33, 33);
     color: white;
@@ -50,7 +55,7 @@ fieldset button{
 }
 
 fieldset input[type="button"]{
-    width: 20vw;
+    width: 10vw;
     height: 25px;
     background-color: rgb(36, 33, 33);
     color: white;
@@ -72,17 +77,5 @@ fieldset button:hover{
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translateX(-50%);
-
-    @media(max-width: 1024px){
-        top: 50%;
-        left: 70%;
-        transform: translateX(-55%);
-    }
-
-    @media(max-width: 1440px){
-        top: 60%;
-        left: 75%;
-        transform: translateX(-57%);
-    }
+    transform: translateX(-50%);    
 }
