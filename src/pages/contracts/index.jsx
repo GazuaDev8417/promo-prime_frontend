@@ -6,6 +6,7 @@ import Header from "../../components/Header"
 import { AiOutlineLogout } from 'react-icons/ai'
 import { IoIosAddCircle} from 'react-icons/io'
 import { FaFileContract } from 'react-icons/fa'
+import { MdDelete } from 'react-icons/md'
 import { convertDate } from "../../utils/convertDate"
 import './Contracts.css'
 
@@ -59,6 +60,23 @@ export default function Contracts(){
         }
     }
 
+
+    const deleteFile = (contract)=>{
+        const decide = window.confirm(`Tem certeza que deseja excluir o registro do contrato de ${contract.company}?`)
+
+        if(decide){
+            axios.delete(`${url}/contract/${contract.id}`, {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }).then(()=>{
+                getContracts()
+            }).catch(e=>{
+                alert(e.response.data)
+            })
+        }
+    }
+
     
 
     return(
@@ -74,6 +92,7 @@ export default function Contracts(){
                     <td>Responsável</td>
                     <td>Data de assinatura</td>
                     <td>Contrato</td>
+                    <td>Excluir</td>
                 </tr>
                 {contracts && contracts.map(contract=>{
                     return(
@@ -81,10 +100,15 @@ export default function Contracts(){
                             <td>{contract.company}</td>
                             <td>{contract.owner}</td>
                             <td>{convertDate(contract.signedAt)}</td>
-                            <td><FaFileContract className="icon"
-                                onClick={()=>{
-                                    window.open(`${url}/files/${contract.contractName}`, '__blank')
+                            <td>
+                                <FaFileContract className="icon"
+                                    onClick={()=>{
+                                        window.open(`${url}/files/${contract.contractName}`, '__blank')
                             }}/></td>
+                            <td>
+                                <MdDelete className="icon"
+                                    onClick={()=> deleteFile(contract)} />
+                            </td>
                         </tr>
                     )
                 })}
