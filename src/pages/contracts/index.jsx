@@ -3,7 +3,7 @@ import axios from 'axios'
 import { url } from '../../constants/url'
 import { useNavigate } from 'react-router-dom'
 import Header from "../../components/Header"
-import { AiOutlineLogout } from 'react-icons/ai'
+import { AiOutlineLogout, AiFillLock } from 'react-icons/ai'
 import { IoIosAddCircle} from 'react-icons/io'
 import { FaFileContract } from 'react-icons/fa'
 import { convertDate } from "../../utils/convertDate"
@@ -63,9 +63,14 @@ export default function Contracts(){
     return(
         <div className="container">
             <Header 
-                rightItem={<AiOutlineLogout onClick={logout} className="logoutIcon"/>}
+                rightItem={
+                    token.user === 'ADM' ? <AiFillLock
+                                                    onClick={()=> navigate('/adm')}
+                                                    className="icon"/>
+                    : <AiOutlineLogout onClick={logout} className="icon"/>
+                }
                 leftItem={<IoIosAddCircle onClick={()=> navigate('/insert-contract')}
-                    className="addIcon"/>}/>
+                    className="icon"/>}/>
             <h1>Lista de Contratos</h1>
             <table>
                 <tr className="borderStyle">
@@ -75,20 +80,14 @@ export default function Contracts(){
                     <td>Contrato</td>
                 </tr>
                 {contracts && contracts.map(contract=>{
-                    const differenceInDays = Math.floor(
-                        (contract.expiresAt - contract.signedAt) / (1000 * 60 * 60 * 24)
-                    )
-console.log(differenceInDays)
-                    const color = differenceInDays >= 100 ? 'yellow' : 'white'
-
                     return(
                         <tr key={contract.id}>
                             <td>{contract.company}</td>
                             <td>{convertDate(contract.signedAt)}</td>
                             <td>{convertDate(contract.expiresAt)}</td>
                             <td>                                
-                                <FaFileContract className="icon"
-                                    color={color}
+                                <FaFileContract className="tableicon"
+                                    color={Date.parse(contract.expiresAt) <= Date.now() ? 'red' : color}
                                     onClick={()=>{
                                         window.open(`${url}/files/${contract.contractName}`, '__blank')
                             }}/></td>

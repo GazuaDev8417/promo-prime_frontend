@@ -3,6 +3,7 @@ import Signup from '../pages/signup'
 import Login from '../pages/login'
 import Contracts  from '../pages/contracts'
 import InsertContract from '../pages/insertContract'
+import AdmArea from '../pages/admArea'
 
 
 
@@ -13,6 +14,7 @@ export default function Router(){
             <Route exact path='/signup' element={<Signup/>}/>
             <Route exact path='/contracts' element={<Contracts/>}/>
             <Route exact path='/insert-contract' element={<InsertContract/>}/>
+            <Route exact path='/adm' element={<AdmArea/>}/>
         </Routes>
     )
 }

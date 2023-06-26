@@ -62,6 +62,10 @@ input{
     }
 }
 
+input[type='date']{
+    width: 15vw;
+}
+
 input[type='file']{
     border: none;
     margin-bottom: 3vh;

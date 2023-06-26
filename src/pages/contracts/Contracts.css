@@ -6,7 +6,7 @@
     color: white;
 }
 
-.logoutIcon, .addIcon{
+.icon{
     font-size: 20pt;
     cursor: pointer;
 }
@@ -22,7 +22,7 @@ table{
     width: 80vw;
 }
 
-table .icon{
+table .tableicon{
     cursor: pointer;
 }
 
