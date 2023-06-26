@@ -14,10 +14,10 @@
 fieldset{
     position: absolute;
     left: 50%;
+    text-align: left;
     transform: translateX(-50%);
     width: 70vw;
     margin-top: 10vh;
-    line-height: 40px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 2px 2px 4px gray;

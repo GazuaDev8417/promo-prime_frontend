@@ -13,10 +13,11 @@ import './InsertContract.css'
 export default function InsertContract(){
     const navigate = useNavigate()
     const [selectedFile, setSelectedFile] = useState(null)
+    const token = JSON.parse(localStorage.getItem('token'))
     const [form, setForm] = useState({
         company:'',
-        owner:'',
-        signedAt:''
+        signedAt:'',
+        expiresAt:'',
     }) 
 
 
@@ -26,8 +27,6 @@ export default function InsertContract(){
     }, [])
 
     useEffect(()=>{
-        const token = localStorage.getItem('token')
-
         if(!token){
             navigate('/')
         }
@@ -51,9 +50,10 @@ export default function InsertContract(){
         const headers = {
             headers: {
                 'Content-Type': 'multipart/form-data',
-                Authorization: localStorage.getItem('token')
+                Authorization: token.token
             }
         }
+
         axios.post(`${url}/contractFile`, formData, headers).then(res=>{
             alert(res.data)
             limpar()
@@ -74,14 +74,14 @@ export default function InsertContract(){
         }else{
             const body = {
                 company: form.company,
-                owner: form.owner,
                 signedAt: form.signedAt,
+                expiresAt: form.expiresAt,
                 contractName: selectedFile.name
             }
             
             axios.post(`${url}/contract`, body, {
                 headers: {
-                    Authorization: localStorage.getItem('token'),
+                    Authorization: token.token,
                     'Content-Type': 'application/json'
                 }
             }).then(()=>{
@@ -131,7 +131,15 @@ export default function InsertContract(){
                         onChange={onChange} placeholder="Nome da empresa" required/>
                     <input type="text" name="owner" value={form.owner}
                         onChange={onChange} placeholder="Responsável" required/>
-                    <input type="date" name="signedAt" value={form.signedAt}
+                    <label htmlFor="signedAt">
+                        Data de assinatura:
+                    </label>
+                    <input type="date" name="signedAt" id="signedAt" value={form.signedAt}
+                        onChange={onChange} required/>
+                    <label htmlFor="expiresAt">
+                        Data de expiração:
+                    </label>
+                    <input type="date" name="expiresAt" value={form.expiresAt}
                         onChange={onChange} required/>
                     <input type="file" onChange={handleFileChange} accept=".pdf"/>
                     <div>

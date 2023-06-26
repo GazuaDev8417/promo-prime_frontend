@@ -6,7 +6,6 @@ import Header from "../../components/Header"
 import { AiOutlineLogout } from 'react-icons/ai'
 import { IoIosAddCircle} from 'react-icons/io'
 import { FaFileContract } from 'react-icons/fa'
-import { MdDelete } from 'react-icons/md'
 import { convertDate } from "../../utils/convertDate"
 import './Contracts.css'
 
@@ -15,6 +14,7 @@ import './Contracts.css'
 export default function Contracts(){
     const navigate = useNavigate()
     const [contracts, setContracts] = useState([])
+    const [color, setColor] = useState('white')
     const token = JSON.parse(localStorage.getItem('token'))
     
 
@@ -58,23 +58,6 @@ export default function Contracts(){
         }
     }
 
-
-    const deleteFile = (contract)=>{
-        const decide = window.confirm(`Tem certeza que deseja excluir o registro do contrato de ${contract.company}?`)
-
-        if(decide){
-            axios.delete(`${url}/contract/${contract.id}`, {
-                headers: {
-                    Authorization: localStorage.getItem('token')
-                }
-            }).then(()=>{
-                getContracts()
-            }).catch(e=>{
-                alert(e.response.data)
-            })
-        }
-    }
-
     
 
     return(
@@ -95,10 +78,11 @@ export default function Contracts(){
                     return(
                         <tr key={contract.id}>
                             <td>{contract.company}</td>
-                            <td>{contract.signedAt}</td>
+                            <td>{convertDate(contract.signedAt)}</td>
                             <td>{convertDate(contract.expiresAt)}</td>
                             <td>
                                 <FaFileContract className="icon"
+                                    color={color}
                                     onClick={()=>{
                                         window.open(`${url}/files/${contract.contractName}`, '__blank')
                             }}/></td>
