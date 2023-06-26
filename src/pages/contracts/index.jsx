@@ -66,6 +66,15 @@ export default function Contracts(){
         navigate('/edit')
     }
 
+
+    const expirationAlert = (contract)=>{
+        const operation = Date.parse(contract.expiresAt) - Date.now()
+        const differenceInDays = Math.round(operation / (1000 * 60 * 60 * 24))
+        
+        return differenceInDays <= 30 ? alert(`Atenção!\nFaltam ${differenceInDays} dias para a expiração do contrato da empresa ${contract.company}`) : null
+         
+    }
+
     
 
     return(
@@ -89,6 +98,9 @@ export default function Contracts(){
                     <td>Editar</td>
                 </tr>
                 {contracts && contracts.map(contract=>{
+                    const operation = Date.parse(contract.expiresAt) - Date.now()
+                    const differenceInDays = Math.round(operation / (1000 * 60 * 60 * 24))
+
                     return(
                         <tr key={contract.id}>
                             <td>{contract.company}</td>
@@ -96,10 +108,11 @@ export default function Contracts(){
                             <td>{convertDate(contract.expiresAt)}</td>
                             <td>                                
                                 <FaFileContract className="tableicon"
-                                    color={Date.parse(contract.expiresAt) <= Date.now() ? 'red' : 'white'}
+                                    color={differenceInDays <= 30 ? 'yellow' : 'white'}
                                     onClick={()=>{
+                                        expirationAlert(contract)
                                         window.open(`${url}/files/${contract.contractName}`, '__blank')
-                                }}/></td>
+                                    }}/></td>
                             <td>
                             <MdModeEditOutline className="tableicon"
                                     onClick={()=> goToEdit(contract)}/>
