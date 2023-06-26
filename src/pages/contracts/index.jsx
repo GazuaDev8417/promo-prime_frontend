@@ -48,7 +48,7 @@ export default function Contracts(){
         })
     }
 
-
+    
     const logout = ()=>{
         const decide = window.confirm('Tem certeza que deseja deslogar?')
 
@@ -75,12 +75,18 @@ export default function Contracts(){
                     <td>Contrato</td>
                 </tr>
                 {contracts && contracts.map(contract=>{
+                    const differenceInDays = Math.floor(
+                        (contract.expiresAt - contract.signedAt) / (1000 * 60 * 60 * 24)
+                    )
+console.log(differenceInDays)
+                    const color = differenceInDays >= 100 ? 'yellow' : 'white'
+
                     return(
                         <tr key={contract.id}>
                             <td>{contract.company}</td>
                             <td>{convertDate(contract.signedAt)}</td>
                             <td>{convertDate(contract.expiresAt)}</td>
-                            <td>
+                            <td>                                
                                 <FaFileContract className="icon"
                                     color={color}
                                     onClick={()=>{
