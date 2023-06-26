@@ -1,0 +1,30 @@
+.container{
+    background-image: url('../../img/wallpaper.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+}
+
+.icon{
+    font-size: 20pt;
+    cursor: pointer;
+}
+
+h1{
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10vh;
+}
+
+.content{
+    margin: 15px;
+}
+
+.card{
+    padding: 5px;
+    width: 70vw;
+    border-bottom: 1px solid;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}

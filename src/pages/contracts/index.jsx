@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import Context from '../../global/Context'
 import axios from 'axios'
 import { url } from '../../constants/url'
 import { useNavigate } from 'react-router-dom'
@@ -6,15 +7,16 @@ import Header from "../../components/Header"
 import { AiOutlineLogout, AiFillLock } from 'react-icons/ai'
 import { IoIosAddCircle} from 'react-icons/io'
 import { FaFileContract } from 'react-icons/fa'
+import { MdModeEditOutline } from 'react-icons/md'
 import { convertDate } from "../../utils/convertDate"
 import './Contracts.css'
 
 
 
 export default function Contracts(){
+    const { setters } = useContext(Context)
     const navigate = useNavigate()
     const [contracts, setContracts] = useState([])
-    const [color, setColor] = useState('white')
     const token = JSON.parse(localStorage.getItem('token'))
     
 
@@ -58,6 +60,12 @@ export default function Contracts(){
         }
     }
 
+
+    const goToEdit = (contract)=>{
+        setters.setContract(contract)
+        navigate('/edit')
+    }
+
     
 
     return(
@@ -78,6 +86,7 @@ export default function Contracts(){
                     <td>Data de assinatura</td>
                     <td>Data de expiração</td>
                     <td>Contrato</td>
+                    <td>Editar</td>
                 </tr>
                 {contracts && contracts.map(contract=>{
                     return(
@@ -87,10 +96,14 @@ export default function Contracts(){
                             <td>{convertDate(contract.expiresAt)}</td>
                             <td>                                
                                 <FaFileContract className="tableicon"
-                                    color={Date.parse(contract.expiresAt) <= Date.now() ? 'red' : color}
+                                    color={Date.parse(contract.expiresAt) <= Date.now() ? 'red' : 'white'}
                                     onClick={()=>{
                                         window.open(`${url}/files/${contract.contractName}`, '__blank')
-                            }}/></td>
+                                }}/></td>
+                            <td>
+                            <MdModeEditOutline className="tableicon"
+                                    onClick={()=> goToEdit(contract)}/>
+                            </td>
                         </tr>
                     )
                 })}
