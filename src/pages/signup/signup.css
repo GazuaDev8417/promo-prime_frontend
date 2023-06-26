@@ -39,6 +39,17 @@ input{
     width: 50vw;
 }
 
+select{
+    background: transparent;
+    border: 1px solid;
+    border-radius: 20px;
+    height: 25px;
+    padding-left: 10px;
+    width: 26.5vw;
+    color: white;
+    border-color: white;
+}
+
 fieldset div{
     margin-top: 20px;
     display: flex;

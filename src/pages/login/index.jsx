@@ -52,7 +52,7 @@ export default function Login(props){
         }
 
         axios.post(`${url}/login`, body).then(res=>{
-            localStorage.setItem('token', res.data)
+            localStorage.setItem('token', JSON.stringify(res.data))
             navigate('/contracts')
         }).catch(e=>{
             alert(e.response.data)

@@ -15,8 +15,8 @@ import './Contracts.css'
 export default function Contracts(){
     const navigate = useNavigate()
     const [contracts, setContracts] = useState([])
-
-
+    const token = JSON.parse(localStorage.getItem('token'))
+    
 
 
     useEffect(()=>{
@@ -24,8 +24,6 @@ export default function Contracts(){
     }, [])
 
     useEffect(()=>{
-        const token = localStorage.getItem('token')
-
         if(!token){
             navigate('/')
         }
@@ -37,7 +35,7 @@ export default function Contracts(){
     const getContracts = ()=>{
         axios.get(`${url}/contract`, {
             headers: {
-                Authorization: localStorage.getItem('token')
+                Authorization: token.token
             }
         }).then(res=>{
             setContracts(res.data)
@@ -89,26 +87,21 @@ export default function Contracts(){
             <table>
                 <tr className="borderStyle">
                     <td>Empresa</td>
-                    <td>Responsável</td>
                     <td>Data de assinatura</td>
+                    <td>Data de expiração</td>
                     <td>Contrato</td>
-                    <td>Excluir</td>
                 </tr>
                 {contracts && contracts.map(contract=>{
                     return(
                         <tr key={contract.id}>
                             <td>{contract.company}</td>
-                            <td>{contract.owner}</td>
-                            <td>{convertDate(contract.signedAt)}</td>
+                            <td>{contract.signedAt}</td>
+                            <td>{convertDate(contract.expiresAt)}</td>
                             <td>
                                 <FaFileContract className="icon"
                                     onClick={()=>{
                                         window.open(`${url}/files/${contract.contractName}`, '__blank')
                             }}/></td>
-                            <td>
-                                <MdDelete className="icon"
-                                    onClick={()=> deleteFile(contract)} />
-                            </td>
                         </tr>
                     )
                 })}
