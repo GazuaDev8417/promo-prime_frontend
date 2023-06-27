@@ -36,7 +36,7 @@ export default function AdmArea(){
         }).then(res=>{
             setTasks(res.data)
         }).catch(e=>{
-            alert(e.response.data)
+            console.log(e.response.data)
         })
     }
 

@@ -108,7 +108,7 @@ export default function Contracts(){
                             <td>{convertDate(contract.expiresAt)}</td>
                             <td>                                
                                 <FaFileContract className="tableicon"
-                                    color={differenceInDays <= 30 ? 'yellow' : 'white'}
+                                    color={differenceInDays <= 30 ? 'red' : 'white'}
                                     onClick={()=>{
                                         expirationAlert(contract)
                                         window.open(`${url}/files/${contract.contractName}`, '__blank')

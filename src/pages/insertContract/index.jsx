@@ -129,10 +129,10 @@ export default function InsertContract(){
                     <legend>Registro de contratos</legend>
                     <input type="text" name="company" value={form.company}
                         onChange={onChange} placeholder="Nome da empresa" required/>
-                    <label htmlFor="signedAt">Data de assinatura: </label>
+                    <label htmlFor="signedAt">Data de assinatura: &ensp;</label>
                     <input type="date" name="signedAt" id="signedAt" value={form.signedAt}
                         onChange={onChange} required/>
-                    <label htmlFor="expiresAt">Data de expiração: </label>
+                    <label htmlFor="expiresAt">Data de expiração: &ensp;</label>
                     <input type="date" name="expiresAt" value={form.expiresAt}
                         onChange={onChange} required/>
                     <input type="file" onChange={handleFileChange} accept=".pdf"/>
