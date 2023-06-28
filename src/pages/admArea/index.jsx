@@ -14,7 +14,7 @@ export default function AdmArea(){
     const navigate = useNavigate()
     const [tasks, setTasks] = useState([])
     const token = JSON.parse(localStorage.getItem('token'))
-
+    
 
 
     useEffect(()=>{
@@ -41,6 +41,11 @@ export default function AdmArea(){
     }
 
 
+    const sortByTime = tasks && tasks.sort((current, next)=>{
+        return next.moment - current.moment
+    })
+
+
     return(
         <div className="container">
             <Header leftItem={<BsCardList onClick={()=> navigate('/contracts')} className="icon"/>}
@@ -48,17 +53,20 @@ export default function AdmArea(){
                     className="icon"/>}/>
             <h1>Área de ADM</h1>
 
+            <h3>Atividades dos usuários</h3>
             <div className="content">
-                    <h3>Atividades dos usuários</h3>
-                    {tasks.length > 0 ? (
-                        tasks.map(task=>{
-                            return(
-                                <div key={task.id} className="card">
-                                    {task.task}
-                                </div>
-                            )
-                        })
-                    ) : null}
+                {sortByTime.length > 0 ? (
+                    sortByTime.map(task=>{
+                        return(
+                            <div key={task.id} className="card">
+                                <div className="title">{task.user}</div>
+                                <b>Email:</b> {task.email}<br/>
+                                <b>Data: </b>{task.moment}<br/>
+                                <b>Atividade: </b>{task.task}
+                            </div>
+                        )
+                    })
+                ) : null}
             </div>
         </div>
     )

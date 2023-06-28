@@ -98,11 +98,11 @@ export default function InsertContract(){
     }
 
     const limpar = ()=>{
-        setForm({
+        /* setForm({
             company:'',
-            owner:'',
+            expiresAt:'',
             signedAt:''
-        })
+        }) */
     }
 
 

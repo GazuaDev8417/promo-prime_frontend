@@ -18,13 +18,20 @@ h1{
 }
 
 .content{
-    margin: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 .card{
-    padding: 5px;
-    width: 70vw;
-    border-bottom: 1px solid;
-    margin-left: 20px;
-    margin-bottom: 15px;
+    padding: 8px;
+    width: 30vw;
+    border: 1px solid;
+    box-shadow: 2px 2px 4px;
+}
+
+.title{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }

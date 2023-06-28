@@ -17,9 +17,9 @@ export default function EditContract(){
     const navigate = useNavigate()
     const token = JSON.parse(localStorage.getItem('token'))
     const [form, setForm] = useState({
-        company:'',
-        signedAt:'',
-        expiresAt:'',
+        company: contract.company,
+        signedAt: contract.signedAt,
+        expiresAt: contract.expiresAt,
     }) 
 
 
