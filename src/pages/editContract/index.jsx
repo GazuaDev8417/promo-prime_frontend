@@ -6,6 +6,7 @@ import axios from 'axios'
 import { url } from '../../constants/url'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { BsCardList } from 'react-icons/bs'
+import { convertDate } from '../../utils/convertDate'
 import './editContract.css'
 
 
@@ -18,8 +19,8 @@ export default function EditContract(){
     const token = JSON.parse(localStorage.getItem('token'))
     const [form, setForm] = useState({
         company: contract.company,
-        signedAt: contract.signedAt,
-        expiresAt: contract.expiresAt,
+        signedAt: convertDate(contract.signedAt),
+        expiresAt: convertDate(contract.expiresAt),
     }) 
 
 
@@ -33,7 +34,7 @@ export default function EditContract(){
             navigate('/')
         }
     }, [])
-
+    
 
     const onChange = (e)=>{
         const { name, value } = e.target
@@ -43,11 +44,14 @@ export default function EditContract(){
 
     const edit = (e)=>{
         e.preventDefault()
+        var signedAtParts = form.signedAt.split('/')
+        var expiresAtParts = form.expiresAt.split('/')
+         
 
         const body = {
             company: form.company,
-            signedAt: form.signedAt,
-            expiresAt: form.expiresAt,
+            signedAt: `${signedAtParts[2]}-${signedAtParts[1]}-${signedAtParts[0]}`,
+            expiresAt: `${expiresAtParts[2]}-${expiresAtParts[1]}-${expiresAtParts[0]}`
         }
         
         axios.put(`${url}/contract/${contract.id}`, body, {
@@ -70,8 +74,8 @@ export default function EditContract(){
     const limpar = ()=>{
         setForm({
             company:'',
-            owner:'',
-            signedAt:''
+            signedAt:'',
+            expiresAt:''
         })
     }
 
@@ -100,11 +104,12 @@ export default function EditContract(){
                     <input type="text" name="company" value={form.company}
                         onChange={onChange} placeholder="Nome da empresa" required/>
                     <label htmlFor="signedAt">Data de assinatura: &ensp;</label>
-                    <input type="date" name="signedAt" id="signedAt" value={form.signedAt}
-                        onChange={onChange} required/>
+                    <input id="signedAt" name="signedAt" onChange={onChange}
+                        value={form.signedAt} className="inputDate" required/>
                     <label htmlFor="expiresAt">Data de expiração: &ensp;</label>
-                    <input type="date" name="expiresAt" value={form.expiresAt}
-                        onChange={onChange} required/>
+                    <input type="text" name="expiresAt" value={form.expiresAt} 
+                        onChange={onChange} id="expiresAt"
+                        maxLength={10} className="inputDate" required/>
                     <div>
                         <input type="button" value="Limpar" onClick={limpar} />
                         <button type="submit">Atualizar</button>
