@@ -46,6 +46,7 @@ export default function InsertContract(){
     const registContract = ()=>{
         const formData = new FormData()
         formData.append('contract', selectedFile)
+        console.log(formData)
         
         const headers = {
             headers: {
@@ -53,8 +54,7 @@ export default function InsertContract(){
                 Authorization: token.token
             }
         }
-
-        axios.post(`${url}/contractFile`, formData, headers).then(res=>{
+        axios.post(`${url}/contractFile/${form.company}`, formData, headers).then(res=>{
             alert(res.data)
             limpar()
         }).catch(e=>{
@@ -98,11 +98,11 @@ export default function InsertContract(){
     }
 
     const limpar = ()=>{
-        /* setForm({
+        setForm({
             company:'',
             expiresAt:'',
             signedAt:''
-        }) */
+        })
     }
 
 

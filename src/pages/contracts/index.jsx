@@ -38,7 +38,7 @@ export default function Contracts(){
         axios.get(`${url}/contract`, {
             headers: {
                 Authorization: token.token
-            }
+            }            
         }).then(res=>{
             setContracts(res.data)
         }).catch(e=>{
@@ -72,9 +72,23 @@ export default function Contracts(){
         const differenceInDays = Math.round(operation / (1000 * 60 * 60 * 24))
         
         return differenceInDays <= 30 ? alert(`Atenção!\nFaltam ${differenceInDays} dias para a expiração do contrato da empresa ${contract.company}`) : null
-         
+        
     }
 
+    const displayContract = (contract)=>{
+        axios.get(`${url}/files/${contract.id}`, {
+            headers: {
+                Authorization: token.token
+            },
+            responseType: 'arraybuffer'
+        }).then(res=>{
+            const file = new Blob([res.data], { type: 'application/pdf' })
+            const fileUrl = URL.createObjectURL(file)
+            window.open(fileUrl, '_blank')
+        }).catch(e=>{
+            alert(e.response.data)
+        })
+    }
     
 
     return(
@@ -111,7 +125,7 @@ export default function Contracts(){
                                     color={differenceInDays <= 30 ? 'red' : 'white'}
                                     onClick={()=>{
                                         expirationAlert(contract)
-                                        window.open(`${url}/files/${contract.contractName}`, '__blank')
+                                        displayContract(contract)
                                     }}/></td>
                             <td>
                             <MdModeEditOutline className="tableicon"
