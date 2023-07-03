@@ -13,7 +13,7 @@ import './login.css'
 export default function Login(props){
     const navigate = useNavigate()
     const [form, setForm] = useState({
-        email:'promo_prime@email.com',
+        email:'visitante@email.com',
         password:'123456'
     })
 
