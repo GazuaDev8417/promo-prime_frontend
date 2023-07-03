@@ -1,4 +1,4 @@
-huimport { useEffect, useState } from 'react'
+jihuimport { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { url } from '../../constants/url'
@@ -13,7 +13,7 @@ import './login.css'
 export default function Login(props){
     const navigate = useNavigate()
     const [form, setForm] = useState({
-        email:promo_prime@email.com',
+        email:'promo_prime@email.com',
         password:'123456'
     })
 
