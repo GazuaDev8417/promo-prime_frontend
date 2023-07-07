@@ -9,7 +9,7 @@ import { IoIosAddCircle} from 'react-icons/io'
 import { FaFileContract } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { convertDate } from "../../utils/convertDate"
-import './Contracts.css'
+import { Container } from './styled.js'
 
 
 
@@ -92,7 +92,7 @@ export default function Contracts(){
     
 
     return(
-        <div className="container">
+        <Container>
             <Header 
                 rightItem={
                     token.user === 'ADM' ? <AiFillLock
@@ -135,6 +135,6 @@ export default function Contracts(){
                     )
                 })}
             </table>
-        </div>
+        </Container>
     )
 }

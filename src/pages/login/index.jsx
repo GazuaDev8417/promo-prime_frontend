@@ -4,7 +4,7 @@ import axios from 'axios'
 import { url } from '../../constants/url'
 import Header from '../../components/Header'
 import { FaUserPlus } from 'react-icons/fa'
-import './login.css'
+import { Container } from './styled.js'
 
 
 
@@ -60,7 +60,7 @@ export default function Login(props){
     }
 
     return(
-        <div className='container'>
+        <Container>
             <Header leftItem={<div></div>} 
                 rightItem={<FaUserPlus onClick={()=> navigate('/signup')}
                     className='rightIcon'/>}/>
@@ -79,6 +79,6 @@ export default function Login(props){
                     </div>
                 </fieldset>
             </form>
-        </div>
+        </Container>
     )
 }

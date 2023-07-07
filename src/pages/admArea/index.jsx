@@ -5,7 +5,7 @@ import axios from 'axios'
 import { url } from '../../constants/url'
 import { BsCardList } from 'react-icons/bs'
 import { IoIosAddCircle} from 'react-icons/io'
-import './AdmArea.css'
+import { Container } from './styled.js'
 
 
 
@@ -47,7 +47,7 @@ export default function AdmArea(){
 
 
     return(
-        <div className="container">
+        <Container>
             <Header leftItem={<BsCardList onClick={()=> navigate('/contracts')} className="icon"/>}
                 rightItem={<IoIosAddCircle onClick={()=> navigate('/insert-contract')}
                     className="icon"/>}/>
@@ -68,6 +68,6 @@ export default function AdmArea(){
                     })
                 ) : null}
             </div>
-        </div>
+        </Container>
     )
 }

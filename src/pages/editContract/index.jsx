@@ -7,7 +7,7 @@ import { url } from '../../constants/url'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { BsCardList } from 'react-icons/bs'
 import { convertDate } from '../../utils/convertDate'
-import './editContract.css'
+import { Container } from './styled.js'
 
 
 
@@ -91,7 +91,7 @@ export default function EditContract(){
 
 
     return(
-        <div className="container">
+        <Container>
             <Header 
                 leftItem={<BsCardList
                     onClick={()=> navigate('/contracts')} 
@@ -102,20 +102,20 @@ export default function EditContract(){
                 <fieldset>
                     <legend>Editando {contract.company}</legend>
                     <input type="text" name="company" value={form.company}
-                        onChange={onChange} placeholder="Nome da empresa" required/>
+                        onChange={onChange} placeholder="Nome da empresa" required/><br/>
                     <label htmlFor="signedAt">Data de assinatura: &ensp;</label>
                     <input id="signedAt" name="signedAt" onChange={onChange}
-                        value={form.signedAt} className="inputDate" required/>
+                        value={form.signedAt} className="inputDate" required/><br/>
                     <label htmlFor="expiresAt">Data de expiração: &ensp;</label>
                     <input type="text" name="expiresAt" value={form.expiresAt} 
                         onChange={onChange} id="expiresAt"
                         maxLength={10} className="inputDate" required/>
-                    <div>
+                    <div className="btnContainer">
                         <input type="button" value="Limpar" onClick={limpar} />
                         <button type="submit">Atualizar</button>
                     </div>                                        
                 </fieldset>
             </form>
-        </div>
+        </Container>
     )
 }

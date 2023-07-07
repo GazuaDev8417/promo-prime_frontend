@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { url } from '../../constants/url'
-import './signup.css'
 import Header from '../../components/Header'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
+import { Container } from './styled.js'
 
 
 
@@ -57,7 +57,7 @@ export default function Signup(props){
     }
 
     return(
-        <div className='container'>
+        <Container>
             <Header 
                 leftItem={<MdKeyboardArrowLeft 
                     onClick={()=> navigate('/')}
@@ -88,6 +88,6 @@ export default function Signup(props){
                     </div>
                 </fieldset>
             </form>
-        </div>
+        </Container>
     )
 }

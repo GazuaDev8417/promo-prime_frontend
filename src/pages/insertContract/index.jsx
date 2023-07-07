@@ -5,7 +5,8 @@ import axios from 'axios'
 import { url } from '../../constants/url'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { BsCardList } from 'react-icons/bs'
-import './InsertContract.css'
+import { Container } from './styled.js'
+
 
 
 
@@ -117,7 +118,7 @@ export default function InsertContract(){
 
 
     return(
-        <div className="container">
+        <Container>
             <Header 
                 leftItem={<BsCardList
                     onClick={()=> navigate('/contracts')} 
@@ -142,6 +143,6 @@ export default function InsertContract(){
                     </div>                                        
                 </fieldset>
             </form>
-        </div>
+        </Container>
     )
 }
