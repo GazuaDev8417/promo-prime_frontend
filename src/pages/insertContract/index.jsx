@@ -44,18 +44,24 @@ export default function InsertContract(){
     }
    
     
-    const registContract = ()=>{
+    const registContract = (e)=>{
+        e.preventDefault()
+
         const formData = new FormData()
+
+        formData.append('company', form.company)
+        formData.append('signedAt', form.signedAt)
+        formData.append('expiresAt', form.expiresAt)
+        formData.append('contractName', selectedFile.name)
         formData.append('contract', selectedFile)
-        console.log(formData)
-        
+                
         const headers = {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 Authorization: token.token
             }
         }
-        axios.post(`${url}/contractFile/${form.company}`, formData, headers).then(res=>{
+        axios.post(`${url}/contractFile`, formData, headers).then(res=>{
             alert(res.data)
             limpar()
         }).catch(e=>{
@@ -125,7 +131,7 @@ export default function InsertContract(){
                     className="listIcon"/>}
                 rightItem={<AiOutlineLogout onClick={logout} className="logoutIcon"/>}/>
 
-            <form onSubmit={sendContractData}>
+            <form onSubmit={registContract}>
                 <fieldset>
                     <legend>Registro de contratos</legend>
                     <input type="text" name="company" value={form.company}
