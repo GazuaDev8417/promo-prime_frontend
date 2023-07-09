@@ -14,10 +14,15 @@ export const Container = styled.div`
         margin-bottom: 10vh;
     }
 
+    h3{
+        margin-left: 10px;
+    }
+
     .content{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
+        margin: 15px;
     }
 
     .card{

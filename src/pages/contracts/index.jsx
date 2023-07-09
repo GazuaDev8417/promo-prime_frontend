@@ -4,7 +4,7 @@ import axios from 'axios'
 import { url } from '../../constants/url'
 import { useNavigate } from 'react-router-dom'
 import Header from "../../components/Header"
-import { AiOutlineLogout, AiFillLock } from 'react-icons/ai'
+import { AiOutlineLogout, AiFillLock, AiFillDelete } from 'react-icons/ai'
 import { IoIosAddCircle} from 'react-icons/io'
 import { FaFileContract } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
@@ -75,6 +75,22 @@ export default function Contracts(){
         
     }
 
+
+    /* const delContract = (contract)=>{
+        const decide = window.confirm(`Tem certeza que deseja excluir o contrado da empresa ${contract.company}?`)
+
+        if(decide){
+            axios.delete(`${url}/contract/${contract.id}`, {
+                headers: {
+                    Authorization: token.token
+                }
+            }).then(()=>{
+                getContracts()
+            }).catch(e=>{
+                alert(e.response.data)
+            })
+        }
+    } */     
     
     
 
@@ -115,7 +131,7 @@ export default function Contracts(){
                                         window.open(`${url}/files/${contract.contractName}`)
                                     }}/></td>
                             <td>
-                            <MdModeEditOutline className="tableicon"
+                                <MdModeEditOutline className="tableicon"
                                     onClick={()=> goToEdit(contract)}/>
                             </td>
                         </tr>
