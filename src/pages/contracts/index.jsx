@@ -75,20 +75,7 @@ export default function Contracts(){
         
     }
 
-    const displayContract = (contract)=>{
-        axios.get(`${url}/files/${contract.id}`, {
-            headers: {
-                Authorization: token.token
-            },
-            responseType: 'arraybuffer'
-        }).then(res=>{
-            const file = new Blob([res.data], { type: 'application/pdf' })
-            const fileUrl = URL.createObjectURL(file)
-            window.open(fileUrl, '_blank')
-        }).catch(e=>{
-            alert(e.response.data)
-        })
-    }
+    
     
 
     return(
@@ -125,7 +112,7 @@ export default function Contracts(){
                                     color={differenceInDays <= 30 ? 'red' : 'white'}
                                     onClick={()=>{
                                         expirationAlert(contract)
-                                        displayContract(contract)
+                                        window.open(`${url}/files/${contract.contractName}`)
                                     }}/></td>
                             <td>
                             <MdModeEditOutline className="tableicon"

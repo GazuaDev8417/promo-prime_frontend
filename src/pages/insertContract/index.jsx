@@ -73,37 +73,7 @@ export default function InsertContract(){
         })
     }
 
-    const sendContractData = (e)=>{
-        e.preventDefault()
-        
-        if(!selectedFile){
-            alert('Selecione o arquivo do contrato')
-        }else{
-            const body = {
-                company: form.company,
-                signedAt: form.signedAt,
-                expiresAt: form.expiresAt,
-                contractName: selectedFile.name
-            }
-            
-            axios.post(`${url}/contract`, body, {
-                headers: {
-                    Authorization: token.token,
-                    'Content-Type': 'application/json'
-                }
-            }).then(()=>{
-                registContract()
-            }).catch(e=>{
-                if(e.response.data === 'jwt expired'){
-                    alert('Sua sessão expirou. Faça login novamente')
-                }else{
-                    alert(e.response.data)
-                }
-            })
-        }
-
-    }
-
+    
     const limpar = ()=>{
         setForm({
             company:'',
