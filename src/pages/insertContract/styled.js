@@ -6,6 +6,10 @@ export const Container = styled.div`
     .logoutIcon, .listIcon{
         font-size: 20pt;
         cursor: pointer;
+
+        @media(max-width: 300px){
+            font-size: 15pt;
+        }
     }
 
     fieldset{
@@ -19,11 +23,24 @@ export const Container = styled.div`
         border-radius: 5px;
         box-shadow: 2px 2px 4px gray;
         line-height: 30px;
+
+        @media(max-width: 600px){
+            width: 50vw;
+        }
+
+        @media(max-width: 300px){
+            width: 70vw;
+        }
+        
     }
 
     legend{
         font-size: 16pt;
         text-align: center;
+
+        @media(max-width: 300px){
+            font-size: 12pt;
+        }
     }
 
     input{
@@ -33,11 +50,27 @@ export const Container = styled.div`
         height: 25px;
         padding: 0 10px;
         color: white;
-        width: 25vw;         
+        width: 25vw;
+        
+        @media(max-width: 600px){
+            width: 50vw;
+        }
+
+        @media(max-width: 300px){
+            width: 70vw;
+        }
     }
 
     input[type='date']{
         width: 15vw;
+
+        @media(max-width: 600px){
+            width: 27vw;
+        }
+
+        @media(max-width: 300px){
+            width: 70vw;
+        }
     }
 
     input[type='file']{
@@ -59,6 +92,14 @@ export const Container = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        @media(max-width: 600px){
+            width: 20vw;
+        }
+
+        @media(max-width: 300px){
+            width: 25vw;
+        }
     }
 
     input[type="button"]{
@@ -69,6 +110,14 @@ export const Container = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        @media(max-width: 600px){
+            width: 20vw;
+        }
+
+        @media(max-width: 300px){
+            width: 25vw;
+        }
     }
 
     input[type='button']:hover{

@@ -6,6 +6,10 @@ export const Container = styled.div`
     .logoutIcon, .listIcon{
         font-size: 20pt;
         cursor: pointer;
+
+        @media(max-width: 300px){
+            font-size: 15pt;
+        }
     }
 
     fieldset{
@@ -19,12 +23,24 @@ export const Container = styled.div`
         margin-top: 10vh;
         padding: 20px;
         border-radius: 5px;
-        box-shadow: 2px 2px 4px gray;        
+        box-shadow: 2px 2px 4px gray; 
+        
+        @media(max-width: 600px){
+            width: 60vw;
+        }
+
+        @media(max-width: 300px){
+            width: 80vw;
+        }
     }
 
     legend{
         font-size: 16pt;
         text-align: center;
+
+        @media(max-width: 300px){
+            font-size: 12pt;
+        }
     }
 
     input{
@@ -34,7 +50,15 @@ export const Container = styled.div`
         height: 25px;
         padding: 0 10px;
         color: white;
-        width: 20vw;  
+        width: 20vw;
+        
+        @media(max-width: 600px){
+            width: 50vw;
+        }
+
+        @media(max-width: 300px){
+            width: 70vw;
+        }
     }
 
     input[type='button']{
@@ -49,6 +73,14 @@ export const Container = styled.div`
         &:hover{
             background-color: rgb(9, 6, 6);
         }
+
+        @media(max-width: 600px){
+            width: 20vw;
+        }
+
+        @media(max-width: 300px){
+            width: 25vw;
+        }
     }
 
     button{
@@ -62,6 +94,14 @@ export const Container = styled.div`
 
         &:hover{
             background-color: rgb(9, 6, 6);
+        }
+
+        @media(max-width: 600px){
+            width: 20vw;
+        }
+
+        @media(max-width: 300px){
+            width: 25vw;
         }
     }
 

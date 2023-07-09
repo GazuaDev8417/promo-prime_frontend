@@ -104,7 +104,7 @@ export default function EditContract(){
                     <input type="text" name="company" value={form.company}
                         onChange={onChange} placeholder="Nome da empresa" required/><br/>
                     <label htmlFor="signedAt">Data de assinatura: &ensp;</label>
-                    <input id="signedAt" name="signedAt" onChange={onChange}
+                    <input type="text" id="signedAt" name="signedAt" onChange={onChange}
                         value={form.signedAt} className="inputDate" required/><br/>
                     <label htmlFor="expiresAt">Data de expiração: &ensp;</label>
                     <input type="text" name="expiresAt" value={form.expiresAt} 

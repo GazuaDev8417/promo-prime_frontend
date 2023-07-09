@@ -18,6 +18,14 @@ export const Container = styled.div`
         padding: 20px;
         border-radius: 5px;
         box-shadow: 2px 2px 4px gray;
+
+        @media(max-width: 600px){
+            width: 50vw;
+        }
+
+        @media(max-width: 300px){
+            width: 70vw;
+        }
     }
 
     legend{
@@ -33,6 +41,14 @@ export const Container = styled.div`
         padding-left: 10px;
         color: white;
         width: 25vw;
+
+        @media(max-width: 600px){
+            width: 40vw;
+        }
+
+        @media(max-width: 300px){
+            width: 60vw;
+        }
     }
 
     fieldset div{
@@ -49,6 +65,10 @@ export const Container = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        @media(max-width: 300px){
+            width: 20vw;
+        }
     }
 
     fieldset input[type="button"]{
@@ -59,6 +79,10 @@ export const Container = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        @media(max-width: 300px){
+            width: 20vw;
+        }
     }
 
     fieldset input[type='button']:hover{

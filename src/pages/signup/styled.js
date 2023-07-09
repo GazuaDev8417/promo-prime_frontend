@@ -33,6 +33,14 @@ export const Container = styled.div`
         padding-left: 10px;
         color: white;
         width: 25vw;
+
+        @media(max-width: 600px){
+            width: 40vw;
+        }
+
+        @media(max-width: 300px){
+            width: 60vw;
+        }
     }
 
     select{
@@ -44,6 +52,14 @@ export const Container = styled.div`
         width: 26vw;
         color: white;
         border-color: white;
+
+        @media(max-width: 600px){
+            width: 42vw;
+        }
+
+        @media(max-width: 300px){
+            width: 63vw;
+        }
     }
 
     fieldset div{
@@ -60,6 +76,10 @@ export const Container = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        @media(max-width: 300px){
+            width: 20vw;
+        }
     }
 
     fieldset input[type="button"]{
@@ -70,6 +90,10 @@ export const Container = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        @media(max-width: 300px){
+            width: 20vw;
+        }
     }
 
     fieldset input[type='button']:hover{
