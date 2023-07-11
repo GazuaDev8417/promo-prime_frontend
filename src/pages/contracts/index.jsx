@@ -43,6 +43,8 @@ export default function Contracts(){
             setContracts(res.data)
         }).catch(e=>{
             if(e.response.data === 'jwt expired'){
+                localStorage.clear()
+                navigate('/')
                 alert('Sua sessão expirou. Faça login novamente')
             }else{
                 alert(e.response.data)

@@ -17,10 +17,12 @@ export default function EditContract(){
     const contract = states.contract
     const navigate = useNavigate()
     const token = JSON.parse(localStorage.getItem('token'))
+    const [selectedFile, setSelectedFile] = useState(null)
     const [form, setForm] = useState({
         company: contract.company,
         signedAt: convertDate(contract.signedAt),
         expiresAt: convertDate(contract.expiresAt),
+        contractUpdates:''
     }) 
 
 
@@ -40,29 +42,36 @@ export default function EditContract(){
         const { name, value } = e.target
         setForm({... form, [name]:value})
     }
+
+    const handleFileChange = (e)=>{
+        setSelectedFile(e.target.files[0])
+    }
     
 
     const edit = (e)=>{
         e.preventDefault()
         var signedAtParts = form.signedAt.split('/')
         var expiresAtParts = form.expiresAt.split('/')
-         
 
-        const body = {
-            company: form.company,
-            signedAt: `${signedAtParts[2]}-${signedAtParts[1]}-${signedAtParts[0]}`,
-            expiresAt: `${expiresAtParts[2]}-${expiresAtParts[1]}-${expiresAtParts[0]}`
-        }
+        const formData = new FormData()
+        formData.append('company', form.company)
+        formData.append('signedAt', `${signedAtParts[2]}-${signedAtParts[1]}-${signedAtParts[0]}`)
+        formData.append('expiresAt', `${expiresAtParts[2]}-${expiresAtParts[1]}-${expiresAtParts[0]}`)
+        formData.append('contractName', selectedFile?.name)
+        formData.append('contract', selectedFile)
+        formData.append('contractUpdates', form.contractUpdates)
         
-        axios.put(`${url}/contract/${contract.id}`, body, {
+        axios.put(`${url}/contract/${contract.id}`, formData, {
             headers: {
                 Authorization: token.token,
-                'Content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data'
             }
         }).then(res=>{
             alert(res.data)
         }).catch(e=>{
             if(e.response.data === 'jwt expired'){
+                localStorage.clear()
+                navigate('/')
                 alert('Sua sessão expirou. Faça login novamente')
             }else{
                 alert(e.response.data)
@@ -75,7 +84,8 @@ export default function EditContract(){
         setForm({
             company:'',
             signedAt:'',
-            expiresAt:''
+            expiresAt:'',
+            contractUpdates:''
         })
     }
 
@@ -90,6 +100,7 @@ export default function EditContract(){
     }
 
 
+    
     return(
         <Container>
             <Header 
@@ -110,6 +121,14 @@ export default function EditContract(){
                     <input type="text" name="expiresAt" value={form.expiresAt} 
                         onChange={onChange} id="expiresAt"
                         maxLength={10} className="inputDate" required/>
+                    <input type="file" onChange={handleFileChange} accept=".pdf"/>
+                    <textarea
+                        name="contractUpdates"
+                        value={form.contractUpdates}
+                        onChange={onChange}
+                        placeholder="Se houve mudanças nos termos do contrato especifique aqui" 
+                        className='contract-updates'
+                        cols="30" rows="5"></textarea>
                     <div className="btnContainer">
                         <input type="button" value="Limpar" onClick={limpar} />
                         <button type="submit">Atualizar</button>

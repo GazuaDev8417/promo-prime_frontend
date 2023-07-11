@@ -61,6 +61,10 @@ export const Container = styled.div`
         }
     }
 
+    input[type='file']{
+        border: none;
+    }
+
     input[type='button']{
         width: 10vw;
         height: 25px;

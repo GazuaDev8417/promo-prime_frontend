@@ -36,7 +36,13 @@ export default function AdmArea(){
         }).then(res=>{
             setTasks(res.data)
         }).catch(e=>{
-            console.log(e.response.data)
+            if(e.response.data === 'jwt expired'){
+                localStorage.clear()
+                navigate('/')
+                alert('Sua sessão expirou. Faça login novamente')
+            }else{
+                alert(e.response.data)
+            }
         })
     }
 
