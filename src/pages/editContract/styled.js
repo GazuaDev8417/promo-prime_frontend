@@ -65,6 +65,11 @@ export const Container = styled.div`
         border: none;
     }
 
+    textarea{
+        background-color: transparent;
+        color: white;
+    }
+
     input[type='button']{
         width: 10vw;
         height: 25px;
