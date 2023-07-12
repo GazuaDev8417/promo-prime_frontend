@@ -3,6 +3,10 @@ import styled from 'styled-components'
 
 
 export const Container = styled.div`
+    @media(max-width: 600px){
+        font-size: 8pt;
+    }
+
     @media(max-width: 300px){
         font-size: 8pt;
     }
@@ -19,6 +23,10 @@ export const Container = styled.div`
     h1{
         font-weight: 500;
         text-align: center;
+
+        @media(max-width: 600px){
+            font-size: 13pt;
+        }
 
         @media(max-width: 300px){
             font-size: 13pt;

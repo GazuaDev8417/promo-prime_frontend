@@ -84,7 +84,7 @@ export default function Signup(props){
 
                     <div>
                         <input type='button' value='Limpar' onClick={limpar}/>
-                        <button type="submit">Entrar</button>
+                        <button type="submit">Cadastrar</button>
                     </div>
                 </fieldset>
             </form>

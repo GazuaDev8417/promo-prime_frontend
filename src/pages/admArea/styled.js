@@ -17,6 +17,10 @@ export const Container = styled.div`
         text-align: center;
         margin-bottom: 10vh;
 
+        @media(max-width: 600px){
+            font-size: 15pt;
+        }
+
         @media(max-width: 300px){
             font-size: 15pt;
         }
@@ -25,6 +29,10 @@ export const Container = styled.div`
 
     h3{
         margin-left: 10px;
+
+        @media(max-width: 600px){
+            font-size: 12pt;
+        }
 
         @media(max-width: 300px){
             font-size: 12pt;
@@ -38,7 +46,8 @@ export const Container = styled.div`
         margin: 15px;
 
         @media(max-width: 600px){
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-direction: column;
         }
 
         @media(max-width: 300px){
@@ -54,7 +63,7 @@ export const Container = styled.div`
         box-shadow: 2px 2px 4px;
 
         @media(max-width: 600px){
-            width: 40vw;
+            width: 80vw;
         }
 
         @media(max-width: 300px){

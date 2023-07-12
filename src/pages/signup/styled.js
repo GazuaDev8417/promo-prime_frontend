@@ -18,6 +18,10 @@ export const Container = styled.div`
         padding: 20px;
         border-radius: 5px;
         box-shadow: 2px 2px 4px gray;
+
+        @media(max-width: 600px){
+            width: 70vw;
+        }
     }
 
     legend{
@@ -35,7 +39,7 @@ export const Container = styled.div`
         width: 25vw;
 
         @media(max-width: 600px){
-            width: 40vw;
+            width: 60vw;
         }
 
         @media(max-width: 300px){
@@ -54,7 +58,7 @@ export const Container = styled.div`
         border-color: white;
 
         @media(max-width: 600px){
-            width: 42vw;
+            width: 63vw;
         }
 
         @media(max-width: 300px){
@@ -77,6 +81,10 @@ export const Container = styled.div`
         border-radius: 5px;
         cursor: pointer;
 
+        @media(max-width: 600px){
+            width: 20vw;
+        }
+
         @media(max-width: 300px){
             width: 20vw;
         }
@@ -90,6 +98,10 @@ export const Container = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        @media(max-width: 600px){
+            width: 20vw;
+        }
 
         @media(max-width: 300px){
             width: 20vw;

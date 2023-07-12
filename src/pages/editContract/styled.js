@@ -26,7 +26,7 @@ export const Container = styled.div`
         box-shadow: 2px 2px 4px gray; 
         
         @media(max-width: 600px){
-            width: 60vw;
+            width: 80vw;
         }
 
         @media(max-width: 300px){
@@ -37,6 +37,10 @@ export const Container = styled.div`
     legend{
         font-size: 16pt;
         text-align: center;
+
+        @media(max-width: 600px){
+            font-size: 12pt;
+        }
 
         @media(max-width: 300px){
             font-size: 12pt;
@@ -53,7 +57,7 @@ export const Container = styled.div`
         width: 20vw;
         
         @media(max-width: 600px){
-            width: 50vw;
+            width: 70vw;
         }
 
         @media(max-width: 300px){
@@ -123,5 +127,9 @@ export const Container = styled.div`
 
     .inputDate{
         width: 10vw;
+
+        @media(max-width: 600px){
+            width: 20vw;
+        }
     }
 `

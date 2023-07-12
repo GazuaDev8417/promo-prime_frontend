@@ -25,7 +25,7 @@ export const Container = styled.div`
         line-height: 30px;
 
         @media(max-width: 600px){
-            width: 50vw;
+            width: 80vw;
         }
 
         @media(max-width: 300px){
@@ -37,6 +37,10 @@ export const Container = styled.div`
     legend{
         font-size: 16pt;
         text-align: center;
+
+        @media(max-width: 600px){
+            font-size: 12pt;
+        }
 
         @media(max-width: 300px){
             font-size: 12pt;
@@ -53,7 +57,7 @@ export const Container = styled.div`
         width: 25vw;
         
         @media(max-width: 600px){
-            width: 50vw;
+            width: 70vw;
         }
 
         @media(max-width: 300px){

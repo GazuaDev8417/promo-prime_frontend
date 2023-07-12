@@ -43,7 +43,7 @@ export const Container = styled.div`
         width: 25vw;
 
         @media(max-width: 600px){
-            width: 40vw;
+            width: 70vw;
         }
 
         @media(max-width: 300px){
@@ -66,6 +66,10 @@ export const Container = styled.div`
         border-radius: 5px;
         cursor: pointer;
 
+        @media(max-width: 600px){
+            width: 20vw;
+        }
+
         @media(max-width: 300px){
             width: 20vw;
         }
@@ -79,6 +83,10 @@ export const Container = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        @media(max-width: 600px){
+            width: 20vw;
+        }
 
         @media(max-width: 300px){
             width: 20vw;
