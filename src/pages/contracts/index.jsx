@@ -35,7 +35,7 @@ export default function Contracts(){
 
 
     const getContracts = ()=>{
-        axios.get(`${url}/contract`, {
+        axios.get(`${url}/contracts`, {
             headers: {
                 Authorization: token.token
             }            
