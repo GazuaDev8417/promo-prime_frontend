@@ -10,6 +10,7 @@ import { FaFileContract } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { convertDate } from "../../utils/convertDate"
 import { Container } from './styled.js'
+import { Buffer } from 'buffer'
 
 
 
@@ -77,6 +78,19 @@ export default function Contracts(){
         
     }
 
+    /* const openFile = (file)=>{
+        const decodedString = Buffer.from(file.data, 'base64').toString('utf8')
+        const reader = new FileReader()
+        reader.readAsDataURL(decodedString)
+
+        reader.onload = ()=>{
+            const blob = new Blob([reader.result], { type: 'application/pdf' })
+            const url = window.URL.createObjectURL(blob)
+
+            window.open(url)
+        }
+    } */
+
 
     /* const delContract = (contract)=>{
         const decide = window.confirm(`Tem certeza que deseja excluir o contrado da empresa ${contract.company}?`)
@@ -109,36 +123,38 @@ export default function Contracts(){
                     className="icon"/>}/>
             <h1>Lista de Contratos</h1>
             <table>
-                <tr className="borderStyle">
-                    <td>Empresa</td>
-                    <td>Data de assinatura</td>
-                    <td>Data de expiração</td>
-                    <td>Contrato</td>
-                    <td>Editar</td>
-                </tr>
-                {contracts && contracts.map(contract=>{
-                    const operation = Date.parse(contract.expiresAt) - Date.now()
-                    const differenceInDays = Math.round(operation / (1000 * 60 * 60 * 24))
+                <tbody>
+                    <tr className="borderStyle">
+                        <td>Empresa</td>
+                        <td>Data de assinatura</td>
+                        <td>Data de expiração</td>
+                        <td>Contrato</td>
+                        <td>Editar</td>
+                    </tr>
+                    {contracts && contracts.map(contract=>{
+                        const operation = Date.parse(contract.expiresAt) - Date.now()
+                        const differenceInDays = Math.round(operation / (1000 * 60 * 60 * 24))
 
-                    return(
-                        <tr key={contract.id}>
-                            <td>{contract.company}</td>
-                            <td>{convertDate(contract.signedAt)}</td>
-                            <td>{convertDate(contract.expiresAt)}</td>
-                            <td>                                
-                                <FaFileContract className="tableicon"
-                                    color={differenceInDays <= 30 ? 'red' : 'white'}
-                                    onClick={()=>{
-                                        expirationAlert(contract)
-                                        window.open(`${url}/files/${contract.contractName}`)
-                                    }}/></td>
-                            <td>
-                                <MdModeEditOutline className="tableicon"
-                                    onClick={()=> goToEdit(contract)}/>
-                            </td>
-                        </tr>
-                    )
-                })}
+                        return(
+                            <tr key={contract.id}>
+                                <td>{contract.company}</td>
+                                <td>{convertDate(contract.signedAt)}</td>
+                                <td>{convertDate(contract.expiresAt)}</td>
+                                <td>                                
+                                    <FaFileContract className="tableicon"
+                                        color={differenceInDays <= 30 ? 'red' : 'white'}
+                                        onClick={()=>{
+                                            expirationAlert(contract)
+                                            window.open(`${url}/files/${contract.contractName}`)
+                                        }}/></td>
+                                <td>
+                                    <MdModeEditOutline className="tableicon"
+                                        onClick={()=> goToEdit(contract)}/>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
             </table>
         </Container>
     )
