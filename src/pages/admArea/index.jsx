@@ -41,7 +41,7 @@ export default function AdmArea(){
                 navigate('/')
                 alert('Sua sessão expirou. Faça login novamente')
             }else{
-                alert(e.response.data)
+                console.log(e.response.data)
             }
         })
     }
