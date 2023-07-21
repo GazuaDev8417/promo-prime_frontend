@@ -22,7 +22,7 @@ export const Container = styled.div`
         padding: 20px;
         border-radius: 5px;
         box-shadow: 2px 2px 4px gray;
-        line-height: 30px;
+        line-height: 35px;
 
         @media(max-width: 600px){
             width: 80vw;
@@ -66,7 +66,7 @@ export const Container = styled.div`
     }
 
     input[type='date']{
-        width: 15vw;
+        width: 11vw;
 
         @media(max-width: 600px){
             width: 27vw;

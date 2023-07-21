@@ -110,10 +110,10 @@ export default function InsertContract(){
                         onChange={onChange} placeholder="Nome da empresa" required/>
                     <label htmlFor="signedAt">Data de assinatura: &ensp;</label>
                     <input type="date" name="signedAt" id="signedAt" value={form.signedAt}
-                        onChange={onChange} required/>
+                        onChange={onChange} required/><br/>
                     <label htmlFor="expiresAt">Data de expiração: &ensp;</label>
                     <input type="date" name="expiresAt" value={form.expiresAt}
-                        onChange={onChange} required/>
+                        onChange={onChange} required/><br/>
                     <input type="file" onChange={handleFileChange} accept=".pdf"/>
                     <div>
                         <input type="button" value="Limpar" onClick={limpar} />

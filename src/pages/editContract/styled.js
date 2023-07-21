@@ -54,7 +54,7 @@ export const Container = styled.div`
         height: 25px;
         padding: 0 10px;
         color: white;
-        width: 20vw;
+        width: 25vw;
         
         @media(max-width: 600px){
             width: 70vw;
@@ -126,7 +126,7 @@ export const Container = styled.div`
     }
 
     .inputDate{
-        width: 10vw;
+        width: 11vw;
 
         @media(max-width: 600px){
             width: 20vw;
