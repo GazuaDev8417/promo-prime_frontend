@@ -70,6 +70,7 @@ export const Container = styled.div`
     }
 
     textarea{
+        margin-top: 10px;
         background-color: transparent;
         color: white;
     }
@@ -126,7 +127,7 @@ export const Container = styled.div`
     }
 
     .inputDate{
-        width: 11vw;
+        width: 15vw;
 
         @media(max-width: 600px){
             width: 20vw;

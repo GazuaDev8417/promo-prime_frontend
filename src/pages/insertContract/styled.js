@@ -66,7 +66,7 @@ export const Container = styled.div`
     }
 
     input[type='date']{
-        width: 11vw;
+        width: 15vw;
 
         @media(max-width: 600px){
             width: 27vw;

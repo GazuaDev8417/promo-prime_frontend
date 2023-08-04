@@ -78,18 +78,13 @@ export default function Contracts(){
         
     }
 
-    /* const openFile = (file)=>{
-        const decodedString = Buffer.from(file.data, 'base64').toString('utf8')
-        const reader = new FileReader()
-        reader.readAsDataURL(decodedString)
+    const openFile = (file)=>{
+        const pdf_buffer = Buffer.from(file.data)
+        const pdf_blob = new Blob([pdf_buffer], {type: 'application/pdf'})
+        const pdf_url = window.URL.createObjectURL(pdf_blob);
 
-        reader.onload = ()=>{
-            const blob = new Blob([reader.result], { type: 'application/pdf' })
-            const url = window.URL.createObjectURL(blob)
-
-            window.open(url)
-        }
-    } */
+        window.open(pdf_url, '_blank');
+    }
 
 
     /* const delContract = (contract)=>{
@@ -145,7 +140,7 @@ export default function Contracts(){
                                         color={differenceInDays <= 30 ? 'red' : 'white'}
                                         onClick={()=>{
                                             expirationAlert(contract)
-                                            window.open(`${url}/files/${contract.contractName}`)
+                                            openFile(contract.contract)
                                         }}/></td>
                                 <td>
                                     <MdModeEditOutline className="tableicon"

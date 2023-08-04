@@ -61,7 +61,7 @@ export default function InsertContract(){
                 Authorization: token.token
             }
         }
-        axios.post(`${url}/contractFile`, formData, headers).then(res=>{
+        axios.post(`${url}/contract`, formData, headers).then(res=>{
             alert(res.data)
             limpar()
         }).catch(e=>{
