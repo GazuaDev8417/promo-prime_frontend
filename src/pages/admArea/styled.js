@@ -71,9 +71,15 @@ export const Container = styled.div`
         }
     }
 
-    .title{
-        font-weight: bold;
-        text-align: center;
+    .titleContainer{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         margin-bottom: 20px;
+    }
+
+    .title{        
+        font-weight: bold;
+        cursor: pointer;
     }
 `

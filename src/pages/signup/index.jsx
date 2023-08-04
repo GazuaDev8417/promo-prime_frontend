@@ -76,10 +76,9 @@ export default function Signup(props){
                         <option value="DEFAULT" style={{color:'black'}}>Padrão</option>
                         <option value="ADM" style={{color:'black'}}>ADM</option>
                     </select>
-                    <input type="password" name='password' value={form.password} id='password'
+                    <input type="password" name='password' value={form.password} 
                         onChange={onChange} placeholder='Sua senha' required/>
-                    <input type="password" name="confirmPass" id="password"
-                        onChange={onChange}
+                    <input type="password" name="confirmPass" onChange={onChange}
                         value={form.confirmPass} placeholder='Repita sua senha' />
 
                     <div>

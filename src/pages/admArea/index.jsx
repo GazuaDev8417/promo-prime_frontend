@@ -5,6 +5,8 @@ import axios from 'axios'
 import { url } from '../../constants/url'
 import { BsCardList } from 'react-icons/bs'
 import { IoIosAddCircle} from 'react-icons/io'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import Modal from "../../components/Modal"
 import { Container } from './styled.js'
 
 
@@ -13,6 +15,8 @@ import { Container } from './styled.js'
 export default function AdmArea(){
     const navigate = useNavigate()
     const [tasks, setTasks] = useState([])
+    const [user, setUser] = useState({})
+    const [mode, setMode] = useState(false)
     const token = JSON.parse(localStorage.getItem('token'))
     
 
@@ -21,7 +25,7 @@ export default function AdmArea(){
         if(!token){
             navigate('/')
         }else if(token.user !== 'ADM'){
-            navigate('/')
+            navigate('/')            
         }
 
         getTasks()
@@ -47,6 +51,18 @@ export default function AdmArea(){
     }
 
 
+    const getUserById = (id)=>{
+        axios.get(`${url}/user/${id}`, {
+            headers: { Authorization: token.token }
+        }).then(res=>{
+            setUser(res.data)
+            setMode(true)
+        }).catch(e=>{
+            alert(e.response.data)
+        })
+    }
+
+
     const sortByTime = tasks && tasks.sort((current, next)=>{
         return next.moment - current.moment
     })
@@ -58,15 +74,23 @@ export default function AdmArea(){
                 rightItem={<IoIosAddCircle onClick={()=> navigate('/insert-contract')}
                     className="icon"/>}/>
             <h1>Área de ADM</h1>
-
             <h3>Atividades dos usuários</h3>
+            <small style={{marginLeft:10}}>
+                Clique no nome do usuário para mais detalhes
+            </small>
+            {mode ? <Modal user={user}/> : null}
             <div className="content">
                 {sortByTime.length > 0 ? (
                     sortByTime.map(task=>{
                         return(
                             <div key={task.id} className="card">
-                                <div className="title">{task.user}</div>
-                                <b>Email:</b> {task.email}<br/>
+                                <div className="titleContainer">
+                                    <div className="title" onClick={()=> getUserById(task.user_id)}>
+                                        {task.user}
+                                    </div>
+                                    <AiOutlineCloseCircle style={{cursor:'pointer'}}
+                                        onClick={()=> setMode(false)}/>
+                                </div>
                                 <b>Data: </b>{task.moment}<br/>
                                 <b>Atividade: </b>{task.task}
                             </div>
