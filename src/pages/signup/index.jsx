@@ -65,7 +65,7 @@ export default function Signup(props){
                 rightItem={<div></div>}/>
             <form onSubmit={signup}>
                 <fieldset>
-                    <legend>Cadastro</legend>
+                    <legend>Cadastro de usuários</legend>
                     <input type="text" name="username" id="username"
                         value={form.username} onChange={onChange} 
                         placeholder='Nome e sobrenome' required/>
