@@ -88,8 +88,8 @@ export default function AdmArea(){
                                     <div className="title" onClick={()=> getUserById(task.user_id)}>
                                         {task.user}
                                     </div>
-                                    <AiOutlineCloseCircle style={{cursor:'pointer'}}
-                                        onClick={()=> setMode(false)}/>
+                                    {/* <AiOutlineCloseCircle style={{cursor:'pointer'}}
+                                        onClick={()=> setMode(false)}/> */}
                                 </div>
                                 <b>Data: </b>{task.moment}<br/>
                                 <b>Atividade: </b>{task.task}

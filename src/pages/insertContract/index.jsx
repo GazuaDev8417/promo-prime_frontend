@@ -19,8 +19,8 @@ export default function InsertContract(){
         company:'',
         signedAt:'',
         expiresAt:'',
-    }) 
-
+    })
+    
 
 
     useEffect(()=>{
@@ -47,32 +47,36 @@ export default function InsertContract(){
     const registContract = (e)=>{
         e.preventDefault()
 
-        const formData = new FormData()
-
-        formData.append('company', form.company)
-        formData.append('signedAt', form.signedAt)
-        formData.append('expiresAt', form.expiresAt)
-        formData.append('contractName', selectedFile.name)
-        formData.append('contract', selectedFile)
-                
-        const headers = {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                Authorization: token.token
+        if(!selectedFile){
+            alert('Selecione o arquivo de contrato')
+        }else{
+            const formData = new FormData()
+    
+            formData.append('company', form.company)
+            formData.append('signedat', form.signedAt)
+            formData.append('expiresat', form.expiresAt)
+            formData.append('contractname', selectedFile.name)
+            formData.append('contract', selectedFile)
+                    
+            const headers = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: token.token
+                }
             }
+            axios.post(`${url}/contractFile`, formData, headers).then(res=>{
+                alert(res.data)
+                limpar()
+            }).catch(e=>{
+                if(e.response.data === 'jwt expired'){
+                    localStorage.clear()
+                    navigate('/')
+                    alert('Sua sessão expirou. Faça login novamente')
+                }else{
+                    alert(e.response.data)
+                }
+            })
         }
-        axios.post(`${url}/contract`, formData, headers).then(res=>{
-            alert(res.data)
-            limpar()
-        }).catch(e=>{
-            if(e.response.data === 'jwt expired'){
-                localStorage.clear()
-                navigate('/')
-                alert('Sua sessão expirou. Faça login novamente')
-            }else{
-                alert(e.response.data)
-            }
-        })
     }
 
     

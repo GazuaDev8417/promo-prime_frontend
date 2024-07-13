@@ -20,10 +20,12 @@ export default function EditContract(){
     const [selectedFile, setSelectedFile] = useState(null)
     const [form, setForm] = useState({
         company: contract.company,
-        signedAt: convertDate(contract.signedAt),
-        expiresAt: convertDate(contract.expiresAt),
+        signedAt: convertDate(contract.signedat),
+        expiresAt: convertDate(contract.expiresat),
         contractUpdates:''
     }) 
+    
+    
 
 
 
@@ -55,9 +57,9 @@ export default function EditContract(){
 
         const formData = new FormData()
         formData.append('company', form.company)
-        formData.append('signedAt', `${signedAtParts[2]}-${signedAtParts[1]}-${signedAtParts[0]}`)
-        formData.append('expiresAt', `${expiresAtParts[2]}-${expiresAtParts[1]}-${expiresAtParts[0]}`)
-        formData.append('contractName', selectedFile?.name)
+        formData.append('signedat', `${signedAtParts[2]}-${signedAtParts[1]}-${signedAtParts[0]}`)
+        formData.append('expiresat', `${expiresAtParts[2]}-${expiresAtParts[1]}-${expiresAtParts[0]}`)
+        formData.append('contractname', selectedFile?.name)
         formData.append('contract', selectedFile)
         formData.append('contractUpdates', form.contractUpdates)
         

@@ -10,7 +10,7 @@ import { FaFileContract } from 'react-icons/fa'
 import { MdModeEditOutline } from 'react-icons/md'
 import { convertDate } from "../../utils/convertDate"
 import { Container } from './styled.js'
-import { Buffer } from 'buffer'
+//import { Buffer } from 'buffer'
 
 
 
@@ -71,17 +71,18 @@ export default function Contracts(){
 
 
     const expirationAlert = (contract)=>{
-        const operation = Date.parse(contract.expiresAt) - Date.now()
+        const operation = Date.parse(contract.expiresat) - Date.now()
         const differenceInDays = Math.round(operation / (1000 * 60 * 60 * 24))
         
         return differenceInDays <= 30 ? alert(`Atenção!\nFaltam ${differenceInDays} dias para a expiração do contrato da empresa ${contract.company}`) : null
         
     }
 
-    const openFile = (file)=>{
-        const pdf_buffer = Buffer.from(file.data)
+    const openFile = (name)=>{
+        /* const pdf_buffer = Buffer.from(file.data)
         const pdf_blob = new Blob([pdf_buffer], {type: 'application/pdf'})
-        const pdf_url = window.URL.createObjectURL(pdf_blob);
+        const pdf_url = window.URL.createObjectURL(pdf_blob) */
+        const pdf_url = `${url}/files/${name}`
 
         window.open(pdf_url, '_blank');
     }
@@ -127,20 +128,20 @@ export default function Contracts(){
                         <td>Editar</td>
                     </tr>
                     {contracts && contracts.map(contract=>{
-                        const operation = Date.parse(contract.expiresAt) - Date.now()
+                        const operation = Date.parse(contract.expiresat) - Date.now()
                         const differenceInDays = Math.round(operation / (1000 * 60 * 60 * 24))
 
                         return(
                             <tr key={contract.id}>
                                 <td>{contract.company}</td>
-                                <td>{convertDate(contract.signedAt)}</td>
-                                <td>{convertDate(contract.expiresAt)}</td>
+                                <td>{convertDate(contract.signedat)}</td>
+                                <td>{convertDate(contract.expiresat)}</td>
                                 <td>                                
                                     <FaFileContract className="tableicon"
                                         color={differenceInDays <= 30 ? 'red' : 'white'}
                                         onClick={()=>{
                                             expirationAlert(contract)
-                                            openFile(contract.contract)
+                                            openFile(contract.contractname)
                                         }}/></td>
                                 <td>
                                     <MdModeEditOutline className="tableicon"
